@@ -42,7 +42,7 @@ public class Database {
                 System.out.println(id);
             }
 
-            System.out.printf("- Room added.");
+            System.out.println("- Room added.");
 
             conn.close();
             System.out.println("Database -> connection terminated");
