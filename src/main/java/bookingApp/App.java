@@ -12,47 +12,16 @@ public class App {
 
     public static void main( String[] args ) throws Exception {
 
-        Database data = new Database();
-        data.Connect();
+    Database data = new Database();
 
-        Accommodation roomA = new Accommodation("apartment", "double bed",
-                2, "front beach");
+    data.addNewRoom(new Accommodation("apartmentA",
+            "double bed",4, "ally front"));
 
+    data.addNewRoom(new Accommodation("apartmentB",
+            "queen size bed",2, "beach front"));
 
-//       Statement stmt = null;
-//        PreparedStatement preparedStatement = null;
-//
-//
-//            stmt = conn.createStatement();
-//
-//            String sql = "INSERT INTO accommodation VALUES(?, ?, ?, ?, ?)";
-//
-//            preparedStatement = conn.prepareStatement(sql);
-
-//            preparedStatement.setInt(1, 1);
-//            preparedStatement.setString(2, "apartment");
-//            preparedStatement.setString(3, "double bed");
-//            preparedStatement.setInt(4, 2);
-//            preparedStatement.setString(5, "beach front");
-//            preparedStatement.addBatch();
-//
-//            preparedStatement.setInt(1, 2);
-//            preparedStatement.setString(2, "apartment");
-//            preparedStatement.setString(3, "queen size bed");
-//            preparedStatement.setInt(4, 2);
-//            preparedStatement.setString(5, "beach front, AC");
-//            preparedStatement.addBatch();
-
-//            preparedStatement.setInt(1, 3);
-//            preparedStatement.setString(2, "penthouse");
-//            preparedStatement.setString(3, "king size bed");
-//            preparedStatement.setInt(4, 2);
-//            preparedStatement.setString(5, "beach front, AC, room service");
-//            preparedStatement.addBatch();
-//
-//            int[] updateCounts = preparedStatement.executeBatch();
-//            conn.commit();
-//            conn.setAutoCommit(true);
+    data.addNewRoom(new Accommodation("apartmentC",
+            "king size bed",2, "beach front, AC"));
 
 
 
