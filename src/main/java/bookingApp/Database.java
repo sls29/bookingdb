@@ -28,6 +28,7 @@ public class Database {
             preparedStatement.setString(2, room.bedType);
             preparedStatement.setInt(3, room.maxGuest);
             preparedStatement.setString(4, room.roomDescription);
+            preparedStatement.addBatch();
 
             int affectedRows = preparedStatement.executeUpdate();
 
@@ -54,7 +55,40 @@ public class Database {
         }
     }
 
-    public void addRoom() {
+    public void setPrice(String roomType, RoomFair price){
+        Connection conn = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            System.out.println("Database -> connected");
+
+            PreparedStatement preparedStatement = null;
+
+            String sql = "INSERT INTO room_fair (value, season) " +
+                    "VALUES(?, ?)";
+
+            preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setDouble(1, price.value);
+            preparedStatement.setString(2, String.valueOf(price.season));
+            preparedStatement.addBatch();
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateRoom() {
 
     }
+
+    public void updatePrice(){
+
+    }
+
 }

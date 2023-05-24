@@ -15,7 +15,7 @@ public class App {
     Database data = new Database();
 
     data.addNewRoom(new Accommodation("apartmentA",
-            "double bed",4, "ally front"));
+            "double bed",4, "alley front"));
 
     data.addNewRoom(new Accommodation("apartmentB",
             "queen size bed",2, "beach front"));
