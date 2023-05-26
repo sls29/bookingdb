@@ -2,6 +2,8 @@ package bookingApp;
 
 import java.sql.*;
 
+import static java.lang.Integer.parseInt;
+
 public class Database {
     public static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost:5432/bookingdb";
@@ -39,12 +41,12 @@ public class Database {
             if (affectedRows > 0) {
                 try (ResultSet rs = preparedStatement.getGeneratedKeys()) {
                     if(rs.next()) {
-                        id = rs.getLong(1);
+                        room.id = rs.getInt(1);
                     }
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());
+                    System.out.println(room.id);
                 }
-                System.out.println(id);
             }
 
             System.out.println("- Room added.");
@@ -108,10 +110,10 @@ public class Database {
                         "(accommodation_id, room_fair_id) VALUES(?, ?)";
                 psAccRoomFairRelation = conn.prepareStatement(sql2);
                 psAccRoomFairRelation.setInt(1, accId);
-                psAccRoomFairRelation.setInt(2, price.id);
+                psAccRoomFairRelation.setInt(2, parseInt(String.valueOf(price.id)));
                 psAccRoomFairRelation.addBatch();
 
-                ResultSet rs2 = psAccRoomFairRelation.executeQuery();
+                ResultSet rs2 = psAccRoomFairRelation.executeQuery(sql2);
             } catch (SQLException e2) {
                 System.out.println(" Error2: " + e2.getMessage());
             }

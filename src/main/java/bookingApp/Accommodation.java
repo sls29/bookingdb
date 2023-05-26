@@ -2,6 +2,7 @@ package bookingApp;
 
 public class Accommodation {
 
+    public int id;
     public String roomType;
     public String bedType;
     public int maxGuest;
