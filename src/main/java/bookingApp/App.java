@@ -23,8 +23,6 @@ public class App {
     data.addNewRoom(new Accommodation("apartmentC",
             "king size bed",2, "beach front, AC"));
 
-
-
-
+    data.setPrice("apartmentA", new RoomFair(25, Season.SUMMER));
     }
 }

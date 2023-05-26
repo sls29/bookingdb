@@ -5,8 +5,7 @@ public class RoomFair {
     public double value;
     public Season season;
 
-    public RoomFair (int id, double value, Season season) {
-        this.id = id;
+    public RoomFair ( double value, Season season) {
         this.value = value;
         this.season = season;
     }
