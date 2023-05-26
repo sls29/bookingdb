@@ -24,5 +24,7 @@ public class App {
             "king size bed",2, "beach front, AC"));
 
     data.setPrice("apartmentA", new RoomFair(25, Season.SUMMER));
+
+    data.setPrice("apartmentB", new RoomFair(35, Season.WINTER));
     }
 }

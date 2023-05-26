@@ -11,6 +11,7 @@ public class Database {
     public int accId;
     public int roomFairId;
 
+
     public void addNewRoom(Accommodation room) {
         long id = 0;
         Connection conn = null;
@@ -77,10 +78,10 @@ public class Database {
                 psRoomFair.setString(2, String.valueOf(price.season));
                 psRoomFair.addBatch();
 
-                psRoomFair.executeBatch();
+                psRoomFair.executeUpdate();
                 ResultSet rs0 = psRoomFair.getGeneratedKeys();
                 while (rs0.next()) {
-                    roomFairId = rs0.getInt(1);
+                    price.id = rs0.getInt(1);
                 }
             } catch (SQLException e0) {
                 System.out.println("Error0: " + e0.getMessage());
@@ -107,7 +108,7 @@ public class Database {
                         "(accommodation_id, room_fair_id) VALUES(?, ?)";
                 psAccRoomFairRelation = conn.prepareStatement(sql2);
                 psAccRoomFairRelation.setInt(1, accId);
-                psAccRoomFairRelation.setInt(2, roomFairId);
+                psAccRoomFairRelation.setInt(2, price.id);
                 psAccRoomFairRelation.addBatch();
 
                 ResultSet rs2 = psAccRoomFairRelation.executeQuery();
@@ -115,13 +116,17 @@ public class Database {
                 System.out.println(" Error2: " + e2.getMessage());
             }
 
+            System.out.println("- Room fair added.");
+
+            conn.close();
+            System.out.println("Database -> connection terminated");
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-        
     }
 
     public void updateRoom() {
