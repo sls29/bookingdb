@@ -22,9 +22,12 @@ public class App {
 
     data.addNewRoom(new Accommodation("apartmentC",
             "king size bed",2, "beach front, AC"));
+//
+//    data.setPrice("apartmentA", new RoomFair(25, Season.SUMMER));
+//
+//    data.setPrice("apartmentB", new RoomFair(35, Season.WINTER));
+//
+//    data.setPrice("apartmentC", new RoomFair(15, Season.SPRING));
 
-    data.setPrice("apartmentA", new RoomFair(25, Season.SUMMER));
-
-    data.setPrice("apartmentB", new RoomFair(35, Season.WINTER));
     }
 }
